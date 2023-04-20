@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+         #
+#    By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/19 22:56:28 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/20 23:07:49 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 FT_PRINTF = ft_printf
 
-SRCS = main.c
+SRCS = main.c ft_pnlist_init.c
 
 SRC = $(addprefix srcs/, $(SRCS))
 
@@ -25,7 +25,7 @@ LDFLAGS = ${FT_PRINTF}/libft.a
 OBJ = ${SRC:.c=.o}
 
 ${NAME}: ft_printf ${OBJ}
-		cc ${CFLAGS} ${OBJ} ${LDFLAGS} -o ${NAME}
+		@cc ${CFLAGS} ${OBJ} ${LDFLAGS} -o ${NAME}
 
 all: ${NAME}
 
@@ -41,7 +41,7 @@ fclean: clean
 		@make -C ${FT_PRINTF} fclean
 
 re: fclean all
-		clear
+		@clear
 
 ft_printf:
 		@make -C ${FT_PRINTF} all
