@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:57:05 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/20 23:31:18 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/22 13:36:47 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void				ft_pnlist_append(t_stack **stack, t_stack *new_lst);
 void				ft_pnlist_init(t_stack **lst, char **argv, int argc);
 void				ft_pnlist_delone(t_stack **stack);
 void				ft_pnlist_clear(t_stack **stack);
+
+int					ft_order_check(t_stack *lst);
 
 #endif

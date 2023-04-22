@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pnlist_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 21:54:53 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/20 23:31:14 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/22 13:48:35 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,7 @@ void	ft_pnlist_init(t_stack **lst, char **argv, int argc)
 
 	i = 1;
 	while (i < argc)
+	{
 		ft_pnlist_append(lst, ft_pnlist_new(ft_atoi(argv[i++])));
+	}
 }
