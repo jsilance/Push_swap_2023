@@ -6,7 +6,7 @@
 #    By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/22 13:41:29 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/23 15:54:27 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,11 @@ NAME = push_swap
 
 FT_PRINTF = ft_printf
 
-SRCS = main.c ft_pnlist_init.c ft_order_check.c
+SRCS = main.c ft_pnlist_init.c ft_order_check.c ft_quick_sort.c ft_order_instr.c
 
 SRC = $(addprefix srcs/, $(SRCS))
 
-CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${FT_PRINTF}/includes/
+CFLAGS = -Wall -Wextra -I includes/ -I ${FT_PRINTF}/includes/
 
 LDFLAGS = ${FT_PRINTF}/libft.a
 

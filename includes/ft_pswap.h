@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:57:05 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/22 13:36:47 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/23 15:52:22 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,10 @@ void				ft_pnlist_delone(t_stack **stack);
 void				ft_pnlist_clear(t_stack **stack);
 
 int					ft_order_check(t_stack *lst);
+size_t				ft_pnlist_size(t_stack *stack);
+
+int					ft_qs_pivot(t_stack *lst);
+
+void				ft_swap_inst(t_stack **lst, char c);
 
 #endif
