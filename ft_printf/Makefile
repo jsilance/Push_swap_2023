@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+         #
+#    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/09 02:09:47 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/11 21:48:43 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/10 18:44:53 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
 
 SRCS = ft_printf.c ft_utils.c ft_print_hex.c ft_pointers.c ft_print_numbers.c
 
@@ -42,4 +42,7 @@ libft:
 
 re: fclean all
 
-.PHONY: all re clean fclean libft
+test: re clean
+		gcc -g -I includes/ main.c libftprintf.a
+
+.PHONY: all re clean fclean libft test

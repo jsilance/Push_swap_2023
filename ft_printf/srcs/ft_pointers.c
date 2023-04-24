@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils3.c                                        :+:      :+:    :+:   */
+/*   ft_pointers.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 23:38:26 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/10 01:18:15 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:33:01 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ static char	*ft_ulltohex(unsigned long long nbr, char *base)
 	return (ptr);
 }
 
-char	*ft_pointer(char *ptr, va_list *ap)
+int	ft_pointer(va_list *ap)
 {
 	char	*arg;
+	int		ret;
 
 	arg = ft_ulltohex(va_arg(*ap, unsigned long long), "0123456789abcdef");
-	ptr = ft_strstock(ptr, "0x", 2, 1);
-	ptr = ft_strstock(ptr, arg, ft_strlen(arg), 3);
-	return (ptr);
+	ret = write(1, "0x", 2);
+	ret += write(1, arg, ft_strlen(arg));
+	free(arg);
+	return (ret);
 }

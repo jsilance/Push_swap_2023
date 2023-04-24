@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+         #
+#    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/23 15:54:27 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/24 13:24:34 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,13 @@ NAME = push_swap
 
 FT_PRINTF = ft_printf
 
-SRCS = main.c ft_pnlist_init.c ft_order_check.c ft_quick_sort.c ft_order_instr.c
+SRCS = main.c ft_pnlist_init.c ft_order_check.c ft_quick_sort.c ft_order_instr.c ft_pre_sort.c
 
 SRC = $(addprefix srcs/, $(SRCS))
 
 CFLAGS = -Wall -Wextra -I includes/ -I ${FT_PRINTF}/includes/
 
-LDFLAGS = ${FT_PRINTF}/libft.a
+LDFLAGS = ${FT_PRINTF}/libftprintf.a
 
 OBJ = ${SRC:.c=.o}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_order_instr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:12:27 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/24 02:58:01 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:42:19 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_rot_stack(t_stack **lst, char c)
 		return ;
 	ptr = *lst;
 	ptr = ptr->next;
+	*lst = ptr;
 	ft_printf("r%c\n", c);
 }
 
@@ -58,7 +59,7 @@ void	ft_push(t_stack **lst_a, t_stack **lst_b, char c)
 {
 	//add front et surtout pas append refaire la finction mais dans l'autre sens *-*
 	// et proteger les fonctions pour ne pas crash si la liste est vide
-	ft_pnlist_append(lst_b, ft_pnlist_new((*lst_a)->content));
+	ft_pnlist_addfront(lst_b, ft_pnlist_new((*lst_a)->content));
 	ft_pnlist_delone(lst_a);
 	ft_printf("p%c\n", c);
 }

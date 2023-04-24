@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils2.c                                        :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 16:53:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/10 01:18:18 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:29:21 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,38 +49,29 @@ static char	*ft_itohex(unsigned int nbr, char *base)
 	return (ptr);
 }
 
-char	*ft_hex_min(char *ptr, va_list *ap)
+int	ft_hex_min(va_list *ap)
 {
 	char	*arg;
+	int		ret;
 
 	arg = ft_itohex(va_arg(*ap, int), "0123456789abcdef");
-	ptr = ft_strstock(ptr, arg, ft_strlen(arg), 3);
-	return (ptr);
+	ret = write(1, arg, ft_strlen(arg));
+	free(arg);
+	return (ret);
 }
 
-char	*ft_hex_maj(char *ptr, va_list *ap)
+int	ft_hex_maj(va_list *ap)
 {
 	char	*arg;
+	int		ret;
 
 	arg = ft_itohex(va_arg(*ap, int), "0123456789ABCDEF");
-	ptr = ft_strstock(ptr, arg, ft_strlen(arg), 3);
-	return (ptr);
+	ret = write(1, arg, ft_strlen(arg));
+	free(arg);
+	return (ret);
 }
 
-char	*ft_percent(char *ptr)
+int	ft_percent(void)
 {
-	char	*arg;
-	size_t	i;
-	char	*tmp;
-
-	i = 0;
-	tmp = ptr;
-	arg = ft_calloc(ft_strlen(ptr) + 2, sizeof(char));
-	if (!arg)
-		return (0);
-	while (ptr && *ptr)
-		arg[i++] = *ptr++;
-	arg[i] = '%';
-	free(tmp);
-	return (arg);
+	return (write(1, "%", 1));
 }

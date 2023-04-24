@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+         #
+#    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 21:43:42 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/11 21:49:04 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/24 13:26:34 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ../libft.a
+NAME = ../libftprintf.a
 
 
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c \

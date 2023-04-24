@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pnlist_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 21:54:53 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/22 13:48:35 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/24 19:18:09 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,27 @@ t_stack	*ft_pnlist_new(int content)
 	if (!stack)
 		return (NULL);
 	stack->content = content;
+	stack->r_index = 0;
 	stack->prev = stack;
 	stack->next = stack;
 	return (stack);
+}
+
+void	ft_pnlist_addfront(t_stack **stack, t_stack *new_lst)
+{
+	t_stack	*lst;
+
+	if (!stack || !*stack)
+	{
+		*stack = new_lst;
+		return ;
+	}
+	lst = *stack;
+	lst->prev->next = new_lst;
+	new_lst->prev = lst->prev;
+	lst->prev = new_lst;
+	new_lst->next = lst;
+	*stack = new_lst;
 }
 
 void	ft_pnlist_append(t_stack **stack, t_stack *new_lst)

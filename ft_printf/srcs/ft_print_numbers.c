@@ -6,26 +6,45 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:40:31 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/10 18:41:11 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/20 18:37:50 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-char	*ft_int(char *ptr, va_list *ap)
+static int	ft_intlen(long nb)
 {
-	char	*arg;
+	int	ret;
 
-	arg = ft_itoa(va_arg(*ap, int));
-	ptr = ft_strstock(ptr, arg, ft_strlen(arg), 3);
-	return (ptr);
+	ret = 0;
+	if (nb == 0)
+		return (1);
+	if (nb < 0)
+		ret++;
+	while (nb)
+	{
+		nb /= 10;
+		ret++;
+	}
+	return (ret);
 }
 
-char	*ft_uint(char *ptr, va_list *ap)
+int	ft_int(va_list *ap)
+{
+	int	arg;
+
+	arg = va_arg(*ap, int);
+	ft_putnbr_fd(arg, 1);
+	return (ft_intlen(arg));
+}
+
+int	ft_uint(va_list *ap)
 {
 	char	*arg;
+	int		ret;
 
-	arg = ft_utoa(va_arg(*ap, int));
-	ptr = ft_strstock(ptr, arg, ft_strlen(arg), 3);
-	return (ptr);
+	arg = ft_utoa(va_arg(*ap, unsigned int));
+	ret = write(1, arg, ft_strlen(arg));
+	free(arg);
+	return (ret);
 }
