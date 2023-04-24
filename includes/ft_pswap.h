@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:57:05 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/23 15:52:22 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/24 02:48:26 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,18 @@
 # define FT_PSWAP_H
 
 # include "ft_printf.h"
+
+enum				e_inst
+{
+	SA = 1,
+	SB,
+	RA,
+	RB,
+	RRA,
+	RRB,
+	PA,
+	PB
+};
 
 typedef struct s_stack
 {
@@ -34,5 +46,9 @@ size_t				ft_pnlist_size(t_stack *stack);
 int					ft_qs_pivot(t_stack *lst);
 
 void				ft_swap_inst(t_stack **lst, char c);
+void				ft_rev_rot_stack(t_stack **lst, char c);
+void				ft_rot_stack(t_stack **lst, char c);
+void				ft_push(t_stack **lst_a, t_stack **lst_b, char c);
+void				ft_inst_selec(t_stack **alst, t_stack **blst, int op);
 
 #endif

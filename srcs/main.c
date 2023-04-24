@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@s19.be>                 +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:57:09 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/23 15:54:01 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/24 02:56:18 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	t_stack	*ptr;
-	int		pivot;
 
 	if (argc < 2)
 		ft_error(1);
@@ -72,10 +71,8 @@ int	main(int argc, char **argv)
 		ft_printf("la lsite est dans l'ordre\n");
 	else
 		ft_printf("la lsite n'est pas dans l'ordre\n");
-	pivot = ft_qs_pivot(a);
 	ft_pnlist_print(a, b);
-	ft_printf("\n\n");
-	ft_swap_inst(&a, 'a');
+	ft_inst_selec(&a, &b, PA);
 	ft_pnlist_print(a, b);
 	ft_pnlist_clear(&a);
 	b = NULL;
