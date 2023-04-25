@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_sorter.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 01:21:18 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/25 02:59:46 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:45:32 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,35 @@ void	ft_triple_sort(t_stack **a, t_stack **b)
 	}
 }
 
-static void	ft_hard_code_insert(t_stack **a, t_stack **b)
+static void	ft_push_min(t_stack **a, t_stack **b)
 {
-	if ((*b)->r_index == 5)
+	size_t	i;
+	size_t	j;
+	int		*tab;
+	t_stack	*ptr;
+
+	tab = ft_fill_tab(*a);
+	ptr = *a;
+	i = 0;
+	j = 0;
+	while (ptr->content != tab[0])
 	{
-		ft_inst_selec(a, b, PA);
-		ft_inst_selec(a, b, RRA);
+		ptr = ptr->next;
+		i++;
 	}
-	else if ((*b)->r_index == 4)
+	ptr = *a;
+	while (ptr->content != tab[0])
 	{
-		ft_inst_selec(a, b, RA);
-		ft_inst_selec(a, b, PA);
-		ft_inst_selec(a, b, RRA);
-		ft_inst_selec(a, b, RRA);
+		ptr = ptr->prev;
+		j++;
 	}
-	else
-	{
-		while ((*a)->r_index < (*b)->r_index)
+	if (i > j)
+		while (j--)
 			ft_inst_selec(a, b, RRA);
-		ft_inst_selec(a, b, PA);
-		while ((*a)->r_index > (*b)->r_index)
+	else
+		while (i--)
 			ft_inst_selec(a, b, RA);
-		ft_inst_selec(a, b, PA);
-	}
+	ft_inst_selec(a, b, PB);
 }
 
 void	ft_five_sort(t_stack **a, t_stack **b)
@@ -81,9 +87,11 @@ void	ft_five_sort(t_stack **a, t_stack **b)
 	ptr = *a;
 	if (ft_order_check(ptr))
 		return ;
-	ft_inst_selec(a, b, PB);
-	ft_inst_selec(a, b, PB);
+	if (ft_pnlist_size(*a) == 5)
+		ft_push_min(a, b);
+	if (ft_pnlist_size(*a) == 4)
+		ft_push_min(a, b);
 	ft_triple_sort(a, b);
-	ft_simple_sort(a, b, SB);
-	ft_hard_code_insert(a, b);
+	while (ft_pnlist_size(*b))
+		ft_inst_selec(a, b, PA);
 }

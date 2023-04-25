@@ -6,7 +6,7 @@
 #    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 21:43:42 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/24 13:26:34 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/10 13:40:48 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ ${NAME}: ${OBJ}
 all: ${NAME}
 
 %.o: %.c
-		@cc ${FLAGS} -I ./ -c $< -o ${<:.c=.o}
+		cc ${FLAGS} -I ./ -c $< -o ${<:.c=.o}
 
 clean:
 		@rm -rf ${OBJ} ${BONUS_OBJ}
