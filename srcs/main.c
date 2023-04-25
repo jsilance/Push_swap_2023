@@ -3,98 +3,104 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:57:09 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/24 19:44:13 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/25 02:37:02 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pswap.h"
 
-static void	ft_error(int err)
+void	ft_error(int err)
 {
 	if (err == 1)
-		ft_printf("Invalid number of arguments\n");
+		ft_printf("Error\n");
 	exit(err);
 }
-#include <stdio.h>
 
-static void	ft_pnlist_print(t_stack *a, t_stack *b)
+static void	ft_radis_x(t_stack **alst, t_stack **blst)
 {
-	t_stack	*ptra;
-	t_stack	*ptrb;
-
-	ptra = a;
-	ptrb = b;
-	if (a)
-	{
-		printf("%d:%d", a->content, a->r_index);
-		a = a->next;
-	}
-	if (b)
-	{
-		printf("% 10d:%d", b->content, b->r_index);
-		b = b->next;
-	}
-	printf("\n");
-	while (a != ptra || b != ptrb)
-	{
-		if (a != ptra)
-		{
-			printf("%d:%d", a->content, a->r_index);
-			a = a->next;
-		}
-		if (b != ptrb)
-		{
-			printf("% 10d:%d", b->content, b->r_index);
-			b = b->next;
-		}
-		printf("\n");
-	}
-	printf("\n\n");
-}
-
-int	main(int argc, char **argv)
-{
-	t_stack		*a;
-	t_stack		*b;
 	size_t		i;
 	size_t		j;
 	long long	nb;
 
 	nb = 1;
-	if (argc < 2)
-		ft_error(1);
-	a = NULL;
-	b = NULL;
-	ft_pnlist_init(&a, argv, argc);
-	ft_pre_sort(&a);
-	i = ft_pnlist_size(a);
-	while (!ft_order_check(a) && nb > 0)
+	i = ft_pnlist_size(*alst);
+	while (!ft_order_check(*alst) && nb > 0)
 	{
 		j = 0;
-		while (j++ < i)
+		while (j++ < i && !ft_order_check(*alst))
 		{
-			if (a->r_index)
-				ft_printf("[%d]:[%d] & [%d]\n", a->content, a->r_index, nb);
-			if (a->r_index & nb)
-				ft_inst_selec(&a, &b, PB);
-			ft_inst_selec(&a, &b, RA);
+			if (!((*alst)->r_index & nb))
+				ft_inst_selec(alst, blst, PB);
+			else
+				ft_inst_selec(alst, blst, RA);
 		}
-		while (ft_pnlist_size(b))
-			ft_inst_selec(&a, &b, PA);
+		while (ft_pnlist_size(*blst))
+			ft_inst_selec(alst, blst, PA);
 		nb = nb << 1;
-		ft_printf("\n");
 	}
-	if (ft_order_check(a))
-		ft_printf("la lsite est dans l'ordre\n");
+}
+
+static char	**ft_duty_free(char **ptr_ptr, int words)
+{
+	int	i;
+
+	i = 0;
+	if (!ptr_ptr)
+		return (NULL);
+	while (ptr_ptr[i] && i < words)
+		free((void *)ptr_ptr[i++]);
+	free((void **)ptr_ptr);
+	return (NULL);
+}
+
+static void	ft_pre_check(int argc, char **argv, t_stack **a)
+{
+	char	**ptr;
+
+	if (argc == 2)
+	{
+		ptr = ft_split(argv[0], ' ');
+		if (!ptr)
+			ft_error(1);
+		if (ft_nb_verif(ptr, ft_ptrlen(ptr)))
+		{
+			ft_duty_free(ptr, ft_ptrlen(ptr));
+			ft_error(1);
+		}
+		ft_pnlist_init(a, ptr, ft_ptrlen(ptr));
+		ft_duty_free(ptr, ft_ptrlen(ptr));
+	}
 	else
-		ft_printf("la lsite n'est pas dans l'ordre\n");
-	ft_pnlist_print(a, b);
-	// ft_pnlist_print(a, b);
-	// ft_pnlist_clear(&a);
+	{
+		if (ft_nb_verif(argv, argc - 1))
+			ft_error(1);
+		ft_pnlist_init(a, argv, argc);
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	t_stack	*a;
+	t_stack	*b;
+
+	if (argc < 2)
+		ft_error(1);
+	ft_pre_check(argc, &argv[1], &a);
 	b = NULL;
-	(void)b;
+	if (ft_pre_sort(&a) == -1)
+	{
+		ft_pnlist_clear(&a);
+		ft_error(1);
+	}
+	if (ft_pnlist_size(a) <= 3)
+		ft_triple_sort(&a, &b);
+	else if (ft_pnlist_size(a) <= 5)
+		ft_five_sort(&a, &b);
+	else
+		ft_radis_x(&a, &b);
+	ft_pnlist_clear(&a);
 	return (0);
 }

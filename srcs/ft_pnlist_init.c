@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pnlist_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 21:54:53 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/24 19:18:09 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:28:43 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pswap.h"
 
-t_stack	*ft_pnlist_new(int content)
+t_stack	*ft_pnlist_new(int content, int index)
 {
 	t_stack	*stack;
 
@@ -20,7 +20,7 @@ t_stack	*ft_pnlist_new(int content)
 	if (!stack)
 		return (NULL);
 	stack->content = content;
-	stack->r_index = 0;
+	stack->r_index = index;
 	stack->prev = stack;
 	stack->next = stack;
 	return (stack);
@@ -88,15 +88,4 @@ void	ft_pnlist_clear(t_stack **stack)
 	while (ptr)
 		ft_pnlist_delone(&ptr);
 	*stack = NULL;
-}
-
-void	ft_pnlist_init(t_stack **lst, char **argv, int argc)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		ft_pnlist_append(lst, ft_pnlist_new(ft_atoi(argv[i++])));
-	}
 }

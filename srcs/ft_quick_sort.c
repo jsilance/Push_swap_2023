@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_quick_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 13:03:33 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/24 16:48:24 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/25 00:55:41 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ size_t	ft_pnlist_size(t_stack *stack)
 	return (size);
 }
 
+void	ft_pnlist_init(t_stack **lst, char **argv, int argc)
+{
+	int	i;
+
+	i = 0;
+	*lst = NULL;
+	while (i < argc)
+		ft_pnlist_append(lst, ft_pnlist_new(ft_atoi(argv[i++]), 0));
+}
+
 static void	ft_swap(int *a, int *b)
 {
 	int	tmp;
@@ -39,7 +49,7 @@ static void	ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-static void	ft_sort_int_tab(int *tab, int size)
+static int	ft_sort_int_tab(int *tab, int size)
 {
 	int	i;
 	int	j;
@@ -52,10 +62,13 @@ static void	ft_sort_int_tab(int *tab, int size)
 		{
 			if (tab[i] > tab[j])
 				ft_swap(&tab[i], &tab[j]);
+			else if (tab[i] == tab[j])
+				return (-1);
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }
 
 int	*ft_fill_tab(t_stack *stack)
@@ -74,6 +87,10 @@ int	*ft_fill_tab(t_stack *stack)
 		tab[i++] = stack->content;
 		stack = stack->next;
 	}
-	ft_sort_int_tab(tab, size);
+	if (ft_sort_int_tab(tab, size) == -1)
+	{
+		free(tab);
+		return (NULL);
+	}
 	return (tab);
 }
