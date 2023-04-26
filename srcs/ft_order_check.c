@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 13:18:09 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/25 00:44:21 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/26 00:44:00 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int	ft_order_check(t_stack *lst)
 	first = lst;
 	if (lst->next == first)
 		return (1);
-	if (lst->content > lst->next->content)
+	if (lst->r_index > lst->next->r_index)
 		return (0);
 	lst = lst->next;
 	while (lst != first && lst->next != first)
 	{
-		if (lst->content > lst->next->content)
+		if (lst->r_index > lst->next->r_index)
 			return (0);
 		lst = lst->next;
 	}

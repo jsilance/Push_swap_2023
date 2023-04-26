@@ -6,7 +6,7 @@
 #    By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/11 21:01:16 by jusilanc          #+#    #+#              #
-#    Updated: 2023/04/25 01:20:21 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/04/26 03:30:29 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = main.c ft_pnlist_init.c ft_order_check.c ft_quick_sort.c ft_order_instr.c
 
 SRC = $(addprefix srcs/, $(SRCS))
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -I includes/ -I ${FT_PRINTF}/includes/
+CFLAGS = -Wall -Wextra -Werror -I includes/ -I ${FT_PRINTF}/includes/
 
 LDFLAGS = ${FT_PRINTF}/libftprintf.a
 

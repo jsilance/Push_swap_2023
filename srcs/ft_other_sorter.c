@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_sorter.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 01:21:18 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/25 17:45:32 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/26 03:20:47 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,41 @@ static void	ft_simple_sort(t_stack **a, t_stack **b, int param)
 
 void	ft_triple_sort(t_stack **a, t_stack **b)
 {
+	t_stack	*pt;
+
+	pt = *a;
+	if (ft_order_check(pt))
+		return ;
+	if (pt->r_index > pt->next->r_index)
+	{
+		if (pt->r_index > pt->prev->r_index)
+			ft_inst_selec(a, b, RA);
+		ft_simple_sort(a, b, SA);
+	}
+	else if (pt->r_index < pt->next->r_index && pt->r_index > pt->prev->r_index)
+		ft_inst_selec(a, b, RRA);
+	else if (pt->r_index < pt->next->r_index && pt->r_index < pt->prev->r_index)
+	{
+		ft_inst_selec(a, b, RRA);
+		ft_inst_selec(a, b, SA);
+	}
+}
+
+static void	ft_min_dist(t_stack **a, int nb, size_t *i, size_t *j)
+{
 	t_stack	*ptr;
 
 	ptr = *a;
-	if (ft_order_check(ptr))
-		return ;
-	if (ptr->r_index > ptr->next->r_index)
+	while (ptr->content != nb)
 	{
-		if (ptr->r_index > ptr->prev->r_index)
-			ft_inst_selec(a, b, RRA);
-		ft_simple_sort(a, b, SA);
+		ptr = ptr->next;
+		i++;
 	}
-	else if (ptr->r_index < ptr->next->r_index
-			&& ptr->r_index > ptr->prev->r_index)
-		ft_inst_selec(a, b, RA);
-	else if (ptr->r_index < ptr->next->r_index
-			&& ptr->r_index < ptr->prev->r_index)
+	ptr = *a;
+	while (ptr->content != nb)
 	{
-		ft_inst_selec(a, b, RA);
-		ft_inst_selec(a, b, SA);
+		ptr = ptr->prev;
+		j++;
 	}
 }
 
@@ -54,23 +70,11 @@ static void	ft_push_min(t_stack **a, t_stack **b)
 	size_t	i;
 	size_t	j;
 	int		*tab;
-	t_stack	*ptr;
 
 	tab = ft_fill_tab(*a);
-	ptr = *a;
 	i = 0;
 	j = 0;
-	while (ptr->content != tab[0])
-	{
-		ptr = ptr->next;
-		i++;
-	}
-	ptr = *a;
-	while (ptr->content != tab[0])
-	{
-		ptr = ptr->prev;
-		j++;
-	}
+	ft_min_dist(a, tab[0], &i, &j);
 	if (i > j)
 		while (j--)
 			ft_inst_selec(a, b, RRA);
@@ -78,6 +82,7 @@ static void	ft_push_min(t_stack **a, t_stack **b)
 		while (i--)
 			ft_inst_selec(a, b, RA);
 	ft_inst_selec(a, b, PB);
+	free(tab);
 }
 
 void	ft_five_sort(t_stack **a, t_stack **b)

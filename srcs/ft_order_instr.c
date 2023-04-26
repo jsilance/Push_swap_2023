@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 15:12:27 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/25 00:52:58 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/26 03:23:27 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ void	ft_rev_rot_stack(t_stack **lst, char c)
 
 void	ft_push(t_stack **lst_a, t_stack **lst_b, char c)
 {
-	ft_pnlist_addfront(lst_b, ft_pnlist_new((*lst_a)->content,
-				(*lst_a)->r_index));
+	t_stack	*ptr;
+
+	ptr = ft_pnlist_new((*lst_a)->content, (*lst_a)->r_index);
+	ft_pnlist_addfront(lst_b, ptr);
 	ft_pnlist_delone(lst_a);
 	ft_printf("p%c\n", c);
 }

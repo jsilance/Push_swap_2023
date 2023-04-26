@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:57:09 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/25 12:47:16 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/26 03:29:38 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	ft_pre_check(int argc, char **argv, t_stack **a)
 	{
 		if (ft_nb_verif(argv, argc - 1))
 			ft_error(1);
-		ft_pnlist_init(a, argv, argc);
+		ft_pnlist_init(a, argv, argc - 1);
 	}
 }
 

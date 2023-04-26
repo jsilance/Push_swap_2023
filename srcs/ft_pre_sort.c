@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 13:05:15 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/25 01:06:59 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/26 00:43:17 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ static int	ft_intchr(int *tab, int content, size_t size)
 
 	i = 0;
 	while (i < size)
-	{
-		if (tab[i] == content)
-			return (i + 1);
-		i++;
-	}
+		if (tab[i++] == content)
+			return (i);
 	return (-1);
 }
 
