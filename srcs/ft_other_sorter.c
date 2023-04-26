@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_other_sorter.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 01:21:18 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/26 03:20:47 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/04/26 13:44:23 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ static void	ft_min_dist(t_stack **a, int nb, size_t *i, size_t *j)
 	while (ptr->content != nb)
 	{
 		ptr = ptr->next;
-		i++;
+		(*i)++;
 	}
 	ptr = *a;
 	while (ptr->content != nb)
 	{
 		ptr = ptr->prev;
-		j++;
+		(*j)++;
 	}
 }
 
@@ -87,10 +87,7 @@ static void	ft_push_min(t_stack **a, t_stack **b)
 
 void	ft_five_sort(t_stack **a, t_stack **b)
 {
-	t_stack	*ptr;
-
-	ptr = *a;
-	if (ft_order_check(ptr))
+	if (ft_order_check(*a))
 		return ;
 	if (ft_pnlist_size(*a) == 5)
 		ft_push_min(a, b);
