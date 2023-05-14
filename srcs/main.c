@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jusilanc <jusilanc@student.s19.be>         +#+  +:+       +#+        */
+/*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 22:57:09 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/04/26 03:29:38 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/05/14 16:13:06 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	main(int argc, char **argv)
 	t_stack	*b;
 
 	if (argc < 2)
-		ft_error(1);
+		return (0);
 	ft_pre_check(argc, &argv[1], &a);
 	b = NULL;
 	if (ft_pre_sort(&a) == -1)

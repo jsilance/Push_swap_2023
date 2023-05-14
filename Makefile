@@ -6,14 +6,14 @@
 #    By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/10 17:35:48 by jusilanc          #+#    #+#              #
-#    Updated: 2023/05/10 17:45:20 by jusilanc         ###   ########.fr        #
+#    Updated: 2023/05/14 16:10:45 by jusilanc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 FT_PRINTF = ft_printf
 
-SRCS = main.c ft_pnlist_init.c ft_order_check.c ft_quick_sort.c ft_order_instr.c ft_pre_sort.c \
+SRCS = main.c ft_pnlist_init.c ft_order_check.c ft_pnlist_utils.c ft_order_instr.c ft_pre_sort.c \
 		ft_gestion_error.c ft_other_sorter.c \
 
 SRC = $(addprefix srcs/, $(SRCS))
