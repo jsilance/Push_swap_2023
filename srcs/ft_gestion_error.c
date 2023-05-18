@@ -6,7 +6,7 @@
 /*   By: jusilanc <jusilanc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 00:42:35 by jusilanc          #+#    #+#             */
-/*   Updated: 2023/05/14 18:10:25 by jusilanc         ###   ########.fr       */
+/*   Updated: 2023/05/18 13:53:35 by jusilanc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,7 @@ int	ft_nb_verif(char **ptr, int words)
 	while (ptr && ptr[i] && i < words)
 	{
 		j = 0;
-		if (ptr[i][j] == '-' && !ft_isdigit(ptr[i][j + 1]))
-			return (1);
-		else if (!ft_isdigit(ptr[i][j]))
-			return (1);
-		else
+		if (ptr[i][j] == '-' && ft_isdigit(ptr[i][j + 1]))
 			j++;
 		while (ptr[i][j])
 		{
